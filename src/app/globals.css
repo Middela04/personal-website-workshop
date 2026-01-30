@@ -22,5 +22,56 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ✅ Galaxy font utility */
+.font-galaxy {
+  font-family: var(--font-orbitron), system-ui, sans-serif;
+}
+
+/* ✅ Glow + dim + flicker */
+@keyframes galaxyGlow {
+  0% {
+    opacity: 0.78;
+    text-shadow:
+      0 0 10px rgba(120, 180, 255, 0.25),
+      0 0 24px rgba(160, 120, 255, 0.22),
+      0 0 48px rgba(80, 220, 255, 0.14);
+    filter: brightness(1);
+  }
+  45% {
+    opacity: 1;
+    text-shadow:
+      0 0 16px rgba(120, 180, 255, 0.55),
+      0 0 38px rgba(160, 120, 255, 0.38),
+      0 0 84px rgba(80, 220, 255, 0.22);
+    filter: brightness(1.12);
+  }
+  100% {
+    opacity: 0.8;
+    text-shadow:
+      0 0 10px rgba(120, 180, 255, 0.22),
+      0 0 22px rgba(160, 120, 255, 0.18),
+      0 0 44px rgba(80, 220, 255, 0.12);
+    filter: brightness(0.98);
+  }
+}
+
+@keyframes tinyFlicker {
+  0%, 100% { opacity: 0.92; }
+  9% { opacity: 0.65; }
+  10% { opacity: 1; }
+  24% { opacity: 0.85; }
+  25% { opacity: 1; }
+  57% { opacity: 0.75; }
+  58% { opacity: 0.98; }
+  78% { opacity: 0.7; }
+  79% { opacity: 1; }
+}
+
+.galaxy-title {
+  animation:
+    galaxyGlow 4.8s ease-in-out infinite,
+    tinyFlicker 7.2s linear infinite;
+  will-change: opacity, filter, text-shadow;
 }
